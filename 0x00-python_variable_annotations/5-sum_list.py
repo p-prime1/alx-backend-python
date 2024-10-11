@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from typing import List
+
 """Module contains a func that adds list of floats"""
 
 
