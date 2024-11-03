@@ -14,6 +14,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"b": {"b": "c"}}, ("b", "b"), "c"),
         ({}, (), {}),
         ({}, ("a"), KeyError),
+        ({"a": 1}, ("a", "b"), KeyError),
         ({"a": ('a', 'a'), }, ("a"), ('a', 'a')),
         ({"a": 1}, (), {"a": 1}),
         ({"a": {"b": 2}}, ("a"), {"b": 2}),
