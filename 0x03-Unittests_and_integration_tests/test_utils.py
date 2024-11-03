@@ -28,6 +28,7 @@ class TestAccessNestedMap(unittest.TestCase):
         else:
             self.assertEqual(access_nested(nested_map, path), result)
 
+
 class TestGetJson(unittest.TestCase):
     """Class test the get_json function using mock tests"""
     @parameterized.expand([
