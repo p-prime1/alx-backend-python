@@ -8,7 +8,7 @@ def stream_users_in_batches(batch_size):
         while i < batch size:
             for i in res:
                 yield i
-            i += 1
+        return res
 
 def batch_processing(batch_size):
     i = 0
