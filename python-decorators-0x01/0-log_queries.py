@@ -1,5 +1,6 @@
+import datetime
 def log_queries(func):
     def wrapper(*args, **kwargs):
-        print(args)
+        print(args, datetime.datetime)
         func()
     return wrapper       
