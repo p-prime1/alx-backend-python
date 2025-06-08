@@ -5,7 +5,7 @@ Includes unit tests with parameterized inputs.
 """
 
 
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 import unittest
 from parameterized import parameterized
 from unittest.mock import patch
@@ -66,3 +66,31 @@ class TestGetJson(unittest.TestCase):
         result = get_json(url)
         self.assertEqual(result, payload)
         mock_get.assert_called_once_with(url)
+
+
+class TestMemoize(unittest.TestCase):
+    """Unit test for testing the memoize decoratoe"""
+
+    def test_momoize(self):
+        """Test method use to memoize the cached result"""
+
+        class TestClass:
+
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        with patch.object(TestClass, "a_method", return_value=42) as mock_obj:
+
+            test_obj = TestClass()
+
+            result1 = test_obj.a_property
+            result2 = test_obj.a_property
+
+            self.assertEqual(result1, 42)
+            self.assertEqual(result2, 42)
+
+            mock_obj.assert_called_once()
