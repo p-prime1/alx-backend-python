@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""Test module for the client module"""
+
+
 from utils import get_json
 import unittest
 from parameterized import parameterized
