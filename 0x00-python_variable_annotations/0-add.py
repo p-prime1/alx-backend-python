@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-    Module contains an add funciton that accepts two floats and returns
-    float
+Module contains an add funciton that accepts two floats and returns
+float
 """
 
 

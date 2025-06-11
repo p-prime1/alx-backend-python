@@ -4,7 +4,7 @@
 
 from utils import get_json
 import unittest
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from unittest.mock import patch, PropertyMock
 from client import GithubOrgClient
 
@@ -77,3 +77,22 @@ class TestGithubOrgClient(unittest.TestCase):
         """Mehtod to tet the has_license method"""
         has_license = GithubOrgClient.has_license()
         self.assertEqual(has_license(repo, license), result)
+
+@parameterized_class(
+    [
+        ('org_payload'),
+        ('repos_payload'),
+        ('expected_repos'),
+        ('apache2_repos'),
+    ]
+)
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """Class integrates test the GithubClient class"""
+    def setupClass(self, payload):
+        self.get_patcher = patch("utils.request.get")
+        self.mock_get_patcher = self.get_patcher.start()
+        self.mock_get_patcher.side_effect = payload
+
+    def tearDownClass(self):
+        self.mock_get_patcher.stop()
+

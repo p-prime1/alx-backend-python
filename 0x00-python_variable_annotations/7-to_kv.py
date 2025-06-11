@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from typing import Tuple, Union
+
 """Contains a func that returns a tuple of it arguments"""
 
 

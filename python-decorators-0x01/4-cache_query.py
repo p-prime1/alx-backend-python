@@ -1,9 +1,10 @@
 import time
-import sqlite3 
+import sqlite3
 import functools
 
 
 query_cache = {}
+
 
 def with_db_connection(func):
     @functools.wraps(func)
@@ -14,8 +15,10 @@ def with_db_connection(func):
         finally:
             conn.close()
         return result
+
     return wrapper
-    
+
+
 def cache_query(func):
     @functools.wraps(func)
     def wrapper(query):
@@ -24,8 +27,8 @@ def cache_query(func):
         result = func(conn, query)
         query_cache[query] = result
         return result
-    return wrapper
 
+    return wrapper
 
 
 @with_db_connection
@@ -34,6 +37,7 @@ def fetch_users_with_cache(conn, query):
     cursor = conn.cursor()
     cursor.execute(query)
     return cursor.fetchall()
+
 
 #### First call will cache the result
 users = fetch_users_with_cache(query="SELECT * FROM users")

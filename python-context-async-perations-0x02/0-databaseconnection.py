@@ -1,7 +1,7 @@
 import sqlite3
 
 
-class DatabaseConnection():
+class DatabaseConnection:
 
     def __init__(self, db_name):
         self.db_name = db_name
@@ -17,5 +17,5 @@ class DatabaseConnection():
 
 with DatabaseConnection(practice_db) as conn:
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM users')
+    cursor.execute("SELECT * FROM users")
     print(cursor.fetchall())
