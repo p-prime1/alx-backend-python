@@ -1,4 +1,4 @@
-form rest_framework import serializers
+from rest_framework import serializers
 from .models import User, Conversation, Message
 from rest_framework.serializers import CharField, SerializerMethodField, ValidationError
 
